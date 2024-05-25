@@ -3,15 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use App\Attribute\Traceable;
 use Doctrine\ORM\Mapping as ORM;
 
+#[Traceable(properties: ['email', 'phoneNumber'], watchMode: Traceable::MODE_BOTH)]
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups]
     private int $id;
 
     #[ORM\Column(length: 255)]
@@ -19,7 +20,6 @@ class Contact
 
     #[ORM\Column(length: 255)]
     private string $firstName;
-
 
     #[ORM\Column(length: 255)]
     private string $email;
