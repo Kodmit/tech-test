@@ -1,9 +1,9 @@
 <?php
 
-namespace App\MessageHandler;
+namespace App\MessageHandler\Contact;
 
 use App\Entity\Contact;
-use App\Message\UpdateContact;
+use App\Message\Contact\UpdateContact;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -18,10 +18,10 @@ final readonly class UpdateContactHandler
     ){}
     public function __invoke(UpdateContact $message): Contact
     {
-        $contact = $this->contactRepository->find($message->getId());
+        $contact = $this->contactRepository->find($message->getContactId());
 
         if (null === $contact) {
-            throw new ResourceNotFoundException(sprintf('contact with id "%d" not found.', $message->getId()));
+            throw new ResourceNotFoundException(sprintf('contact with id "%d" not found.', $message->getContactId()));
         }
 
         $contact->update(

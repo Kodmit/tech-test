@@ -1,8 +1,8 @@
 <?php
 
-namespace App\MessageHandler;
+namespace App\MessageHandler\Contact;
 
-use App\Message\RemoveContact;
+use App\Message\Contact\RemoveContact;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -18,10 +18,10 @@ final readonly class RemoveContactHandler
     {}
     public function __invoke(RemoveContact $message): void
     {
-        $contact = $this->contactRepository->find($message->getId());
+        $contact = $this->contactRepository->find($message->getContactId());
 
         if (null === $contact) {
-            throw new ResourceNotFoundException(sprintf('contact with id "%d" not found.', $message->getId()));
+            throw new ResourceNotFoundException(sprintf('contact with id "%d" not found.', $message->getContactId()));
         }
 
         $this->entityManager->remove($contact);

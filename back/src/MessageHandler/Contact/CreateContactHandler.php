@@ -1,9 +1,9 @@
 <?php
 
-namespace App\MessageHandler;
+namespace App\MessageHandler\Contact;
 
 use App\Entity\Contact;
-use App\Message\CreateContact;
+use App\Message\Contact\CreateContact;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
