@@ -9,11 +9,14 @@ This project uses Docker for setting up the development environment. The service
 - **Start the environment**: `make up`
 - **Stop the environment**: `make down`
 - **Initialize the environment**: `make init`
+- **Create a new user**: `make bash` and `bin/console app:user:create <username> <password>`
+
+### Getting started
+Use the postman collection, login with your user and retrieve the JWT token, use it to access to the other routes.
 
 ### Service URLs
 
 - **API**: http://localhost
-- **Frontend**: http://localhost:3000
 
 ## PHP Code Overview
 
@@ -45,8 +48,6 @@ The `ops` directory contains Dockerfiles and configuration files for the Docker 
 - **Apache**: The Apache service is built from the Dockerfile in `ops/apache`. It serves the Symfony application on ports 80 and 8080. The Apache virtual host configuration files are stored in `ops/apache/config/vhosts`.
 
 - **PHP**: The PHP service is built from the Dockerfile in `ops/php`. It runs the PHP-FPM process to handle PHP requests from Apache. The PHP service has access to the Symfony application code through a Docker volume.
-
-- **Node**: The Node service is built from the Dockerfile in `ops/node`. It runs a Node.js server for the Vue.js frontend application. The Node service has access to the frontend code through a Docker volume.
 
 - **PostgreSQL**: The PostgreSQL service uses the `postgres:15-alpine` image. It runs a PostgreSQL database server. The database data is stored in a Docker volume to persist data across container restarts.
 

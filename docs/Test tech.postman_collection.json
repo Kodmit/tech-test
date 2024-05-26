@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "be108738-2d75-475c-926f-a7f9edf7157e",
+		"name": "Test tech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32765053"
+	},
+	"item": [
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "updateContact",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lastName\": \"Bailly\",\n    \"firstName\": \"Alexandre\",\n    \"email\": \"test@test.fr\",\n    \"phoneNumber\": \"0649584648\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/contacts/6",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createContact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lastName\": \"Bailly2\",\n    \"firstName\": \"Alexandre\",\n    \"email\": \"test@test.fr\",\n    \"phoneNumber\": \"0649584648\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/contacts",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getContacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/contacts",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeContact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/contacts/6",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTagToContact",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/contacts/31320d2f-be98-4719-b3eb-9af7c5af8aa9/tags/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts",
+								"31320d2f-be98-4719-b3eb-9af7c5af8aa9",
+								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeTagFromContact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/contacts/6/tags/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"contacts",
+								"6",
+								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tag",
+			"item": [
+				{
+					"name": "createTag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test tag\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/tags",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/tags",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveTag",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/tags/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"tags",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test@test.fr\",\n    \"password\": \"testtest\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/login_check",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTY3MTUzNTMsImV4cCI6MTcxNjcxODk1Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdCJ9.pm5iTL-gJPmDBa0tlwiaUHOqh278LK8U5tISPqIYHnoSKg-qKTH4-mMwZNmMwpsfNdGHjJ18-boVa2964c-RMp5PGQN86HaDklWlTprYQlW5ukUCWUreSmn0wrn5sk7mkjoJlZ8pAoiUrhrMGtaGlwMfWOGxYeNCwX5WwoLmSTUItAgPq34Kl7WWRKLhEUc4QzTdc0VY5nRUSlSmevDGkwtV7v2NUolLHb2CIIo2KoE87OkYwJeJWUOYq3j0Gzwj9ql9iWDI4YCumfkLrEi3O-a-SqG1JDIRvsTSHMx-o4jcvDzvOvJCKJcv3lNSUHF7htjAVmh8Sp1rWHdUzT6Gkg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost",
+			"type": "string"
+		}
+	]
+}
