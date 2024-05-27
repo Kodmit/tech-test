@@ -1,11 +1,11 @@
 FROM php:8.2-fpm
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https libpq-dev \
+    && apt-get install -y --no-install-recommends vim curl debconf subversion git apt-transport-https libpq-dev libzip-dev \
     build-essential locales acl mailutils wget zlib1g-dev libpng-dev \
     sudo
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd zip
 
 COPY php.ini /usr/local/etc/php/php.ini
 COPY php-fpm-pool.conf 	/usr/local/etc/php/pool.d/www.conf
