@@ -9,6 +9,7 @@ This project uses Docker for setting up the development environment. The service
 - **Start the environment**: `make up`
 - **Stop the environment**: `make down`
 - **Initialize the environment**: `make init`
+- **Generate JWT keys**: `php bin/console lexik:jwt:generate-keypair`
 - **Create a new user**: `make bash` and `bin/console app:user:create <username> <password>`
 
 ### Getting started
