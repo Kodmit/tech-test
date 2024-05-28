@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-#[Traceable(properties: ['email', 'phoneNumber'], watchMode: Traceable::MODE_BOTH)]
+#[Traceable(properties: ['email', 'phoneNumber', 'tags'], watchMode: Traceable::MODE_BOTH)]
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {

@@ -19,7 +19,6 @@ final readonly class RemoveTagHandler
     public function __invoke(RemoveTag $command): void
     {
         $tag = $this->tagRepository->find($command->getTagId());
-
         if (null === $tag) {
             throw new ResourceNotFoundException(sprintf(
                 'tag with id "%s" not found', $command->getTagId()

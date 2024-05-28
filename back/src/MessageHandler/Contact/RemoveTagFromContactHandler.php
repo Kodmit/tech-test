@@ -20,22 +20,23 @@ final readonly class RemoveTagFromContactHandler
 
     public function __invoke(RemoveTagFromContact $command): void
     {
+        // Check if the tag id exist
         $tag = $this->tagRepository->find($command->getTagId());
-
         if (null === $tag) {
             throw new ResourceNotFoundException(sprintf(
                 'tag with id "%s" not found', $command->getTagId()
             ));
         }
 
+        // Check if the contact id exist
         $contact = $this->contactRepository->find($command->getContactId());
-
         if (null === $contact) {
             throw new ResourceNotFoundException(sprintf(
                 'contact with id "%s" not found', $command->getContactId()
             ));
         }
 
+        // Remove the tag from the contact
         $contact->removeTag($tag);
 
         $this->entityManager->flush();

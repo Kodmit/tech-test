@@ -10,10 +10,14 @@ class Trace
 {
     public const ACTION_CREATE = 'create';
     public const ACTION_UPDATE = 'update';
+    public const ACTION_ADD_RELATION = 'addRelation';
+    public const ACTION_REMOVE_RELATION = 'removeRelation';
 
     private const AVAILABLE_ACTIONS = [
         self::ACTION_CREATE,
-        self::ACTION_UPDATE
+        self::ACTION_UPDATE,
+        self::ACTION_ADD_RELATION,
+        self::ACTION_REMOVE_RELATION
     ];
 
     #[ORM\Id]
@@ -37,13 +41,13 @@ class Trace
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $oldValue;
 
-    #[ORM\Column(length: 255)]
-    private string $newValue;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $newValue;
 
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
-    public function __construct(User $author, string $action, string $className, string $property, ?string $oldValue, string $newValue)
+    public function __construct(User $author, string $action, string $className, string $property, ? string $oldValue, ?string $newValue)
     {
         if (false === in_array($action, self::AVAILABLE_ACTIONS)) {
             throw new \DomainException(sprintf('action "%s" not found', $action));
@@ -89,7 +93,7 @@ class Trace
         return $this->oldValue;
     }
 
-    public function getNewValue(): string
+    public function getNewValue(): ?string
     {
         return $this->newValue;
     }

@@ -21,6 +21,7 @@ class Tag
     #[Groups(['tag'])]
     private string $name;
 
+    #[ORM\Column(type: 'integer')]
     #[Groups(['tag'])]
     private int $contactsCount;
 
@@ -34,6 +35,7 @@ class Tag
     {
         $this->name = $name;
         $this->contacts = new ArrayCollection();
+        $this->contactsCount = 0;
     }
 
     public function getId(): int
@@ -56,18 +58,25 @@ class Tag
 
     public function getContactsCount(): int
     {
-        return $this->contacts->count();
+        return $this->contactsCount;
+    }
+
+    public function setContactsCount(int $contactCount): void
+    {
+        $this->contactsCount = $contactCount;
     }
 
     public function addContact(Contact $contact): void
     {
         if (false === $this->contacts->contains($contact)) {
             $this->contacts->add($contact);
+            $this->contactsCount += 1;
         }
     }
 
     public function removeContact(Contact $contact): void
     {
         $this->contacts->removeElement($contact);
+        $this->contactsCount -= 1;
     }
 }

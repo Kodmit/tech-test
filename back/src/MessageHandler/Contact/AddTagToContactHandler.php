@@ -21,16 +21,16 @@ final readonly class AddTagToContactHandler
 
     public function __invoke(AddTagToContact $command): Contact
     {
+        // Check if the tag id exist
         $tag = $this->tagRepository->find($command->getTagId());
-
         if (null === $tag) {
             throw new ResourceNotFoundException(sprintf(
                 'tag with id "%s" not found', $command->getTagId()
             ));
         }
 
+        // Check if the contact id exist
         $contact = $this->contactRepository->find($command->getContactId());
-
         if (null === $contact) {
             throw new ResourceNotFoundException(sprintf(
                 'contact with id "%s" not found', $command->getContactId()
@@ -38,7 +38,6 @@ final readonly class AddTagToContactHandler
         }
 
         $contact->addTag($tag);
-
         $this->entityManager->flush();
 
         return $contact;

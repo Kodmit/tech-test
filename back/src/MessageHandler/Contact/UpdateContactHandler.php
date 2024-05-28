@@ -18,8 +18,8 @@ final readonly class UpdateContactHandler
     ){}
     public function __invoke(UpdateContact $message): Contact
     {
+        // Get the contact and check if exist
         $contact = $this->contactRepository->find($message->getContactId());
-
         if (null === $contact) {
             throw new ResourceNotFoundException(sprintf('contact with id "%d" not found.', $message->getContactId()));
         }
